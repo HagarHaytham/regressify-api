@@ -1,0 +1,20 @@
+# .gitignore for Django and React project
+
+# Ignore compiled Python files
+*.pyc
+__pycache__/
+
+# Ignore local settings (e.g., database configuration)
+local_settings.py
+
+# Ignore SQLite database file
+db.sqlite3
+
+# Ignore media files (user-uploaded content)
+media/
+
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore build artifacts from React
+build/
