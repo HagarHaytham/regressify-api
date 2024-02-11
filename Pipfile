@@ -11,6 +11,9 @@ pandas = "*"
 scikit-learn = "*"
 matplotlib = "*"
 pillow = "*"
+gunicorn = "*"
+django-heroku = "<5.0.0"  
+
 
 [dev-packages]
 
