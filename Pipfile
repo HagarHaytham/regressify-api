@@ -1,0 +1,21 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+djangorestframework = "*"
+django-cors-headers = "*"
+pandas = "*"
+scikit-learn = "*"
+matplotlib = "*"
+pillow = "*"
+gunicorn = "*"
+django-heroku = "<5.0.0"  
+psycopg2 = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
