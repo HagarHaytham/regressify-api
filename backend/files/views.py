@@ -7,8 +7,6 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 import io
 import matplotlib.pyplot as plt
-from PIL import Image
-import base64
 
 
 class LinearRegressionView(APIView):
@@ -42,36 +40,18 @@ class LinearRegressionView(APIView):
                 model = LinearRegression()
                 model.fit(X, y)
 
-                # # Get regression coefficients and intercept
-                # coefficients = model.coef_
-                # intercept = model.intercept_
+                response_data = {
+                    'x_data': X[X.columns[0]],
+                    'y_data': y,
+                    # 'y_predicted': model.predict(X),
+                    'x_label': X.columns[0],
+                    'y_label': target_name,
+                    'coefficients' : model.coef_,
+                    'intercept' :model.intercept_,
 
-                # print(intercept)
-                # # # Prepare response
-                # response_data = {
-                #     'coefficients': coefficients.tolist(),
-                #     'intercept': intercept,
-                #     'message': 'Linear regression completed successfully',
-                # }
-                # return Response(response_data, status=status.HTTP_200_OK)
-
-                # Create the scatter plot
-                plt.figure(figsize=(8, 6))
-                plt.scatter(X, y, label='Actual')
-                plt.plot(X, model.predict(X), color='red', label='Predicted')
-                plt.xlabel(X.columns[0])
-                plt.ylabel(target_name)
-                plt.title('Scatter Plot with Linear Regression')
-                plt.legend()
-
-                # Convert plot to image
-                buf = io.BytesIO()
-                plt.savefig(buf, format='png')
-                buf.seek(0)
-                image_data = base64.b64encode(buf.read()).decode('utf-8')
-
-                # Return image data in the response
-                return Response({'image_data': image_data, 'message': 'Linear regression completed successfully',})
+                    'message': 'Linear regression completed successfully',
+                }  
+                return Response(response_data, status=status.HTTP_200_OK)
 
 
         except Exception as e:
